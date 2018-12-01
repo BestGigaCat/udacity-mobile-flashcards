@@ -18,9 +18,14 @@ export default class QuizScreen extends React.Component {
         const deckID = navigation.getParam('deckID', '');
         getDeck(deckID).then((deck) => {
                 const questions = JSON.parse(deck).questions;
-                this.setState({questions: this.shuffleQuestions(questions)});
+                this.shuffleQuestions(questions);
+                this.setState({questions: questions});
             }
         );
+    }
+
+    componentDidUpdate() {
+        this.shuffleQuestions(this.state.questions);
     }
 
     render() {
@@ -82,7 +87,6 @@ export default class QuizScreen extends React.Component {
             array[i] = array[j];
             array[j] = temp;
         }
-        return array;
     }
 
     markAsCorrect = () => {

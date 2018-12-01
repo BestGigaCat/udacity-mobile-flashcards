@@ -14,7 +14,7 @@ export default class DeckOverviewScreen extends React.Component {
     }
 
     static navigationOptions = {
-        title: 'DeckOverview',
+        title: 'Deck Overview',
     };
 
     render() {

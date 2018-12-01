@@ -1,6 +1,7 @@
 # About
 This is the third project for Udacity mobile flashcard work. You could manage decks and cards in it to answer questions at any time with your phone.
 
+This project is started with a template provided by `expo init`.
 # How to start project
 Run
 ```
