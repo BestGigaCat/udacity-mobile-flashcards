@@ -12,7 +12,7 @@ export function clearNotification() {
 
 const localNotification = {
     title: 'You have not done a quiz for a day!',
-    body: 'Come bac and challenge yourself!',
+    body: 'Come back and challenge yourself!',
 };
 
 export function setNotification() {
