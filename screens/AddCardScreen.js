@@ -33,7 +33,7 @@ export default class AddCardScreen extends React.Component {
                 />
                 <Button
                     title={'Submit'}
-                    disabled={this.state.answer === '' && this.state.question === ''}
+                    disabled={this.state.answer === '' || this.state.question === ''}
                     onPress={() => {
                         addCard(deckID, {
                             question: this.state.question,
