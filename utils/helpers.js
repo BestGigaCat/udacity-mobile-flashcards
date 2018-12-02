@@ -5,7 +5,7 @@ import {Notifications, Permissions} from 'expo';
 
 const NOTIFICATION_KEY = 'MobileFlashCard:notifications';
 
-export function clearLocalNotification() {
+export function clearNotification() {
     return AsyncStorage.removeItem(NOTIFICATION_KEY)
         .then(Notifications.cancelAllScheduledNotificationsAsync)
 }
@@ -15,21 +15,22 @@ const localNotification = {
     body: 'Come bac and challenge yourself!',
 };
 
-export function setLocalNotification() {
+export function setNotification() {
     AsyncStorage.getItem(NOTIFICATION_KEY)
         .then(JSON.parse)
         .then(data => {
             if (data === null) {
                 Permissions.askAsync(Permissions.NOTIFICATIONS)
                     .then(({status}) => {
-                        console.log(status);
-                        if (status === 'granted' || status === 'undetermined') {
+                        if (status === 'granted') {
                             Notifications.cancelAllScheduledNotificationsAsync();
+
+                            // Start from the same time tomrrow and repeat every one day
                             Notifications.scheduleLocalNotificationAsync(
                                 localNotification,
                                 {
-                                    time: Date.now() + 5000,
-                                    repeat: 'minute',
+                                    time: Date.now() + 86400,
+                                    repeat: 'day',
                                 }
                             );
                             AsyncStorage.setItem(NOTIFICATION_KEY, JSON.stringify(true));

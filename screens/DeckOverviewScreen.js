@@ -1,7 +1,7 @@
 import React from "react";
 import {Button, Text, View} from "react-native";
 import {getDeck} from "../utils/api";
-import {clearLocalNotification, setLocalNotification} from "../utils/helpers";
+import {clearNotification, setNotification} from "../utils/helpers";
 
 export default class DeckOverviewScreen extends React.Component {
     state = {
@@ -51,6 +51,6 @@ export default class DeckOverviewScreen extends React.Component {
     }
 
     resetNotification() {
-        clearLocalNotification().then(setLocalNotification);
+        clearNotification().then(setNotification);
     }
 }
