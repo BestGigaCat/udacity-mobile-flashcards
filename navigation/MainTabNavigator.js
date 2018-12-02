@@ -1,6 +1,6 @@
 import React from 'react';
-import { Platform } from 'react-native';
-import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import {Platform} from 'react-native';
+import {createBottomTabNavigator, createStackNavigator} from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
@@ -11,42 +11,42 @@ import AddCardScreen from "../screens/AddCardScreen";
 import AddDeckScreen from "../screens/AddDeckScreen";
 
 const HomeStack = createStackNavigator({
-  Home: HomeScreen,
-  DeckOverview: DeckOverviewScreen,
-  QuizScreen: QuizScreen,
-  AddCardScreen: AddCardScreen,
-  AddDeckScreen: AddDeckScreen,
+    Home: HomeScreen,
+    DeckOverview: DeckOverviewScreen,
+    QuizScreen: QuizScreen,
+    AddCardScreen: AddCardScreen,
+    AddDeckScreen: AddDeckScreen,
 });
 
 HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
-  ),
+    tabBarLabel: 'Home',
+    tabBarIcon: ({focused}) => (
+        <TabBarIcon
+            focused={focused}
+            name={
+                Platform.OS === 'ios'
+                    ? `ios-information-circle${focused ? '' : '-outline'}`
+                    : 'md-information-circle'
+            }
+        />
+    ),
 };
 
 const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
+    Settings: SettingsScreen,
 });
 
 SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
-    />
-  ),
+    tabBarLabel: 'Settings',
+    tabBarIcon: ({focused}) => (
+        <TabBarIcon
+            focused={focused}
+            name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
+        />
+    ),
 };
 
 export default createBottomTabNavigator({
-  HomeStack,
-  SettingsStack,
+    HomeStack,
+    SettingsStack,
 });

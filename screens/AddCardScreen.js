@@ -1,5 +1,5 @@
 import React from "react";
-import {Text, TextInput, View, Button} from "react-native";
+import {Button, Text, TextInput, View} from "react-native";
 import {addCard} from "../utils/api";
 
 export default class AddCardScreen extends React.Component {
@@ -41,7 +41,7 @@ export default class AddCardScreen extends React.Component {
                         });
                         navigation.navigate('Home');
                     }}
-                 />
+                />
             </View>
         );
     }

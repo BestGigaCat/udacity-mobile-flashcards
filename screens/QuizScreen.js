@@ -24,10 +24,6 @@ export default class QuizScreen extends React.Component {
         );
     }
 
-    componentDidUpdate() {
-        this.shuffleQuestions(this.state.questions);
-    }
-
     render() {
         if(this.state.questions === null || this.state.questions === undefined) {
             return null;
@@ -66,6 +62,25 @@ export default class QuizScreen extends React.Component {
                     <Text>
                         Score: You have answered {Math.round(((this.state.correct)/this.state.questions.length)*100)}% Correct!
                     </Text>
+                    <Button
+                        title={'Restart Quiz'}
+                        onPress={() => {
+                            this.shuffleQuestions(this.state.questions);
+                            this.setState({
+                                correct: 0,
+                                indexAt: 0,
+                                showQuestion: true,
+                            });
+                        }}
+                    />
+                    <Button
+                        title={'Back to Deck'}
+                        onPress={() => {
+                            this.props.navigation.navigate('DeckOverview', {
+                                deckID: this.props.navigation.getParam('deckID', ''),
+                            });
+                        }}
+                    />
                 </View>
             );
         }

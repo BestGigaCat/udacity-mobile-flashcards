@@ -1,6 +1,7 @@
 import React from "react";
 import {Button, Text, View} from "react-native";
 import {getDeck} from "../utils/api";
+import {clearLocalNotification, setLocalNotification} from "../utils/helpers";
 
 export default class DeckOverviewScreen extends React.Component {
     state = {
@@ -39,6 +40,7 @@ export default class DeckOverviewScreen extends React.Component {
                             navigation.navigate('QuizScreen', {
                                 deckID: deckID,
                             });
+                            this.resetNotification();
                         }}
                     />
                 </View>
@@ -46,5 +48,9 @@ export default class DeckOverviewScreen extends React.Component {
         } else {
             return null;
         }
+    }
+
+    resetNotification() {
+        clearLocalNotification().then(setLocalNotification);
     }
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import {Button, Text, TextInput, View} from "react-native";
-import {addCard, addDeck} from "../utils/api";
+import {addDeck} from "../utils/api";
 
 export default class AddDeckScreen extends React.Component {
     constructor(props) {
@@ -11,7 +11,7 @@ export default class AddDeckScreen extends React.Component {
     }
 
     render() {
-        return(
+        return (
             <View>
                 <Text>
                     What's the title of your new deck?
@@ -26,7 +26,9 @@ export default class AddDeckScreen extends React.Component {
                     disabled={this.state.title === ''}
                     onPress={() => {
                         addDeck(this.state.title);
-                        this.props.navigation.navigate('Home');
+                        this.props.navigation.navigate('DeckOverview', {
+                            deckID: this.state.title,
+                        });
                     }}
                 />
             </View>

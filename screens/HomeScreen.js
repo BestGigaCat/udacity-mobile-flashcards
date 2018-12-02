@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 import {getDecks, loadInitialDecks} from "../utils/api";
 
-
 export default class HomeScreen extends React.Component {
   state = {
       decks: null,
